@@ -32,7 +32,7 @@ const ShowBook = () => {
   }, [id]);
 
   return (
-    <div className="p-4">
+    <div className="p-24">
       <BackButton />
       <h1 className="text-3xl my-4">Show Book</h1>
       {loading ? (

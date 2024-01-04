@@ -1,6 +1,7 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle } from "react-icons/bi";
+import PropTypes from "prop-types";
 
 const BookModal = ({ book, onClose }) => {
   return (
@@ -10,7 +11,7 @@ const BookModal = ({ book, onClose }) => {
     >
       <div
         onClick={(event) => event.stopPropagation()}
-        className="w-[600px] max-w-full h-[400px] bg-white rounded-xl p-4 flex flex-col relative"
+        className="w-[600px] max-w-full h-[450px] bg-white rounded-xl p-4 flex flex-col relative"
       >
         <AiOutlineClose
           className="absolute right-6 top-6 text-3xl text-red-600 cursor-pointer"
@@ -40,5 +41,13 @@ const BookModal = ({ book, onClose }) => {
     </div>
   );
 };
-
+BookModal.propTypes = {
+  book: PropTypes.any,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  author: PropTypes.string,
+  rating: PropTypes.number,
+  description: PropTypes.string,
+  onClose: PropTypes.func,
+};
 export default BookModal;

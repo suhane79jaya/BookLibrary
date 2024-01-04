@@ -16,7 +16,7 @@ const EditBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
-
+  axios.defaults.withCredentials = false;
   useEffect(() => {
     setLoading(true);
     axios
@@ -57,14 +57,14 @@ const EditBook = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
+        //alert("An error happened. Please Chack console");
         enqueueSnackbar("Error", { variant: "error" });
         console.log(error);
       });
   };
 
   return (
-    <div className="p-4">
+    <div className="p-24">
       <BackButton />
       <h1 className="text-3xl my-4">Edit Book</h1>
       {loading ? <Spinner /> : ""}

@@ -15,7 +15,7 @@ const CreateBooks = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-
+  axios.defaults.withCredentials = false;
   const handleSaveBook = () => {
     const data = {
       image,
@@ -42,7 +42,7 @@ const CreateBooks = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-24">
       <BackButton />
       <h1 className="text-3xl my-4">Create Book</h1>
       {loading ? <Spinner /> : ""}
