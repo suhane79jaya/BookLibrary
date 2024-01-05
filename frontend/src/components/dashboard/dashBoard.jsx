@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../../api/API";
 const DashBoard = () => {
   const [suc, setSuc] = useState();
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
+  const [books, setBooks] = useState([]);
+  console.log("dashboard Books", books);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/dashboard")
+      .get(API_URL)
       .then((res) => {
-        if (res.data === "Success") {
-          setSuc("Successed Ok");
+        console.log("Dashboard response API data:", res.data);
+
+        if (res.data) {
+          setSuc("Data from API URL");
+          setBooks(res.data);
         } else {
           navigate("/");
         }
@@ -19,8 +25,61 @@ const DashBoard = () => {
   });
   return (
     <div className="p-24">
-      <h2>dashBoard</h2>
+      <h2>YOU LOGIN AS A ADMIN</h2>
       <p>{suc}</p>
+      <table className="w-full border-separate border-spacing-2">
+        <thead>
+          <tr>
+            <th className="border border-slate-600 rounded-md">No</th>
+            <th className="border border-slate-600 rounded-md">Image</th>
+
+            <th className="border border-slate-600 rounded-md">Title</th>
+            <th className="border border-slate-600 rounded-md max-md:hidden">
+              Author
+            </th>
+            <th className="border border-slate-600 rounded-md max-md:hidden">
+              Rating
+            </th>
+            <th className="border border-slate-600 rounded-md max-md:hidden">
+              Review
+            </th>
+            <th className="border border-slate-600 rounded-md max-md:hidden">
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {books.map((book, id) => (
+            <tr key={id} className="h-8">
+              <td className="border border-slate-700 rounded-md text-center">
+                {id + 1}
+              </td>
+              <td className="border border-slate-700 rounded-md text-center">
+                <img
+                  style={{ height: "200px", width: "200px" }}
+                  src={book.image_url}
+                  alt=""
+                />
+              </td>
+              <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+                {book.title}
+              </td>
+              <td className="border border-slate-700 rounded-md text-center">
+                {book.authors}
+              </td>
+              <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+                {book.rating}
+              </td>
+              <td className="border border-slate-700 rounded-md text-center">
+                {book.review}
+              </td>
+              <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+                {book.description}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

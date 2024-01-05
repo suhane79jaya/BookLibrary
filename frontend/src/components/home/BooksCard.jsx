@@ -5,6 +5,7 @@
 // import { BsInfoCircle } from 'react-icons/bs';
 // import { MdOutlineDelete } from 'react-icons/md';
 import BookSingleCard from "./BookSingleCard";
+import PropTypes from "prop-types";
 
 const BooksCard = ({ books }) => {
   return (
@@ -15,5 +16,13 @@ const BooksCard = ({ books }) => {
     </div>
   );
 };
-
+BooksCard.propTypes = {
+  books: PropTypes.any,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  author: PropTypes.string,
+  rating: PropTypes.number,
+  description: PropTypes.string,
+  onClose: PropTypes.func,
+};
 export default BooksCard;
