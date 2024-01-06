@@ -38,6 +38,11 @@ const Header = () => {
                 label="MyBookShelf"
               />{" "}
               <Tab LinkComponent={NavLink} to="/login" label="Login"></Tab>
+              <Tab
+                LinkComponent={NavLink}
+                to="/bookshelf"
+                label="Search & Filter By GoogleApi"
+              ></Tab>
             </div>
           </Tabs>
         </Toolbar>

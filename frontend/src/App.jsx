@@ -9,6 +9,7 @@ import SignUp from "./components/signUp/signUp";
 import Header from "./components/header/header";
 import Login from "./components/login/login";
 import DashBoard from "./components/dashboard/dashBoard";
+import Posts from "./components/bookshelf/bookShelf";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/login" element={<Login />}></Route>
 
         <Route path="/dashboard" element={<DashBoard />}></Route>
+        <Route path="/bookShelf" element={<Posts />}></Route>
         <Route path="/" element={<Home />} />
         <Route path="/books/create" element={<CreateBook />} />
         <Route path="/books/details/:id" element={<ShowBook />} />
