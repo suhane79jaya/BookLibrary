@@ -5,7 +5,7 @@ import { MdOutlineDelete } from "react-icons/md";
 import PropTypes from "prop-types";
 
 const BooksTable = ({ books }) => {
-  console.log("books", books);
+  //console.log("books", books);
   return (
     <>
       <div className="p-4">

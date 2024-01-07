@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
@@ -11,11 +11,17 @@ const Login = () => {
     axios
       .post("http://localhost:5000/login", { email, password })
       .then((res) => {
+        console.log("login data", res.data);
+        alert("login Successfully");
+        // window.localStorage.setItem("token", res.data);
+        // window.location.href = "./userDetails";
         if (res.data.status === "Success") {
           if (res.data.role === "admin") {
+            window.localStorage.setItem("Admintoken", res.data.token);
             navigate("/dashboard");
           } else {
-            navigate("/");
+            window.localStorage.setItem("Visitortoken", res.data.token);
+            navigate("/Home");
           }
         }
       })
@@ -24,7 +30,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+      <div className="flex flex-col w-full max-w-md px-k4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
         <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
           Login To Your Account
         </div>
@@ -77,14 +83,14 @@ const Login = () => {
               </div>
             </div>
             <div className="flex items-center mb-6 -mt-4">
-              <div className="flex ml-auto">
+              {/* <div className="flex ml-auto">
                 <a
                   href="#"
                   className="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
                 >
                   Forgot Your Password?
                 </a>
-              </div>
+              </div> */}
             </div>
             <div className="flex w-full">
               <button
@@ -102,7 +108,14 @@ const Login = () => {
             target="_blank"
             className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
           >
-            <span className="ml-2">You don&#x27;t have an account?</span>
+            <span className="ml-2">
+              <Link
+                to="/register"
+                className="text-sm text-blue-500 underline hover:text-blue-700"
+              >
+                You don&#x27;t have an account?
+              </Link>
+            </span>
           </a>
         </div>
       </div>

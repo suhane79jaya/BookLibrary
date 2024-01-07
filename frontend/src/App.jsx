@@ -10,18 +10,19 @@ import Header from "./components/header/header";
 import Login from "./components/login/login";
 import DashBoard from "./components/dashboard/dashBoard";
 import Posts from "./components/bookshelf/bookShelf";
-
+import Logout from "./components/logout/logout";
 const App = () => {
   return (
     <>
       <Header />
       <Routes>
         <Route path="/register" element={<SignUp />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/Home" element={<Home />}></Route>
 
         <Route path="/dashboard" element={<DashBoard />}></Route>
         <Route path="/bookShelf" element={<Posts />}></Route>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/books/create" element={<CreateBook />} />
         <Route path="/books/details/:id" element={<ShowBook />} />
         <Route path="/books/edit/:id" element={<EditBook />} />

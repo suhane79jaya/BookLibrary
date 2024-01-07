@@ -2,11 +2,16 @@ import { useState } from "react";
 import { AppBar, Toolbar, Tabs, Tab, Typography } from "@mui/material";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState(false);
   const [setTab] = useState(window.location.pathname);
+  const removeToken = () => {
+    localStorage.clear();
+    navigate("/");
+  };
   axios.defaults.withCredentials = true;
   return (
     <nav className="main-nav">
@@ -37,11 +42,17 @@ const Header = () => {
                 to="/books/create"
                 label="MyBookShelf"
               />{" "}
-              <Tab LinkComponent={NavLink} to="/login" label="Login"></Tab>
+              <Tab LinkComponent={NavLink} to="/" label="Login"></Tab>
               <Tab
                 LinkComponent={NavLink}
                 to="/bookshelf"
                 label="Search & Filter By GoogleApi"
+              ></Tab>
+              <Tab
+                LinkComponent={NavLink}
+                to="/"
+                label="Logout"
+                onClick={removeToken}
               ></Tab>
             </div>
           </Tabs>

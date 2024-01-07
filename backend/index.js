@@ -12,30 +12,15 @@ const app = express();
 
 // Middleware for parsing request body
 app.use(express.json());
-//app.options("*", cors());
-// app.get("/cors", (req, res) => {
-//   res.set("Access-Control-Allow-Origin", "http://localhost:5173/");
-//   res.send({ msg: "This has CORS enabled 🎈" });
-// });
-// Middleware for handling CORS POLICY
-// Option 1: Allow All Origins with Default of cors(*)
+
 app.use(
   cors({
     Origin: ["http://localhost:5173/"],
     Methods: ["GET", "POST"],
-    //allowedHeaders: ["Content-Type"],
     credentials: true,
   })
 );
 app.use(cookieParser());
-// Option 2: Allow Custom Origins
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
 
 app.get("/", cors(), (request, response) => {
   console.log(request);
@@ -88,8 +73,9 @@ app.post("/login", cors(), (req, res) => {
             "jwt-secret-key",
             { expiresIn: "1d" }
           );
+
           res.cookie("token", token);
-          return res.json({ status: "Success", role: user.role });
+          return res.json({ status: "Success", role: user.role, token: token });
         } else {
           return response.json("The password is incorrect");
         }
@@ -98,6 +84,12 @@ app.post("/login", cors(), (req, res) => {
       return res.json("No record existed");
     }
   });
+});
+
+app.get("/logout", (res, req) => {
+  console.log("Hello my logout page");
+  res.clearCookie("token", { path: "/" });
+  res.status(200).send("User logout");
 });
 mongoose
   .connect(mongoDBURL)

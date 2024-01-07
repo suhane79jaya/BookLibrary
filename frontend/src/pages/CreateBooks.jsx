@@ -7,8 +7,8 @@ import { useSnackbar } from "notistack";
 import Posts from "../components/bookshelf/bookShelf";
 
 const CreateBooks = () => {
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
+  const [image, setImage] = useState();
+  const [title, setTitle] = useState();
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
@@ -32,7 +32,7 @@ const CreateBooks = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created successfully", { variant: "success" });
-        navigate("/");
+        navigate("/Home");
       })
       .catch((error) => {
         setLoading(false);
