@@ -1,30 +1,22 @@
-<<<<<<< HEAD
-# BookLibrary
-=======
-# Book Store MERN stack project
+## BookShelf App
 
-## Lessons
+This repository contains a book library built using MERN Stack.Please follow the instruction to set it up.
 
-- [x] Lesson 01: Create Node.js project from scratch
-- [x] Lesson 02: Create our first Http Route
-- [x] Lesson 03: Add MongoDB and mongoose to node js
-- [x] Lesson 04: Create Book model with mongoose
-- [x] Lesson 05: Save a new Book with mongoose
-- [x] Lesson 06: Get All Books with mongoose
-- [x] Lesson 07: Get One Book by id with mongoose
-- [x] Lesson 08: Update a Book with mongoose
-- [x] Lesson 09: Delete a book with mongoose
-- [x] Lesson 10: Refactor Node js with express router
-- [x] Lesson 11: CORS policy in Node js and Express js
-- [x] Lesson 12: Create React project, Vite, Tailwind CSS
-- [x] Lesson 13: SPA and Add react router dom
-- [x] Lesson 14: Show Books List in React
-- [x] Lesson 15: Show Book Details in React
-- [x] Lesson 16: Create Book in React
-- [x] Lesson 17: Edit Book in React
-- [x] Lesson 18: Delete Book in React
-- [x] Lesson 19: Show Books List as Card
-- [x] Lesson 20: Make Book Card a single component
-- [x] Lesson 21: Add Book Modal
-- [x] Lesson 22: Improve User Experience (UX) with beautiful alert
->>>>>>> 3d6ff6c (Added My Project)
+## **Features**
+
+1. User Login as a Admin and visitor.
+2. Dashboard access if user login as a admin.
+3. Home access if user login as a visitor.
+4. Home provides two tabs Table and Card .
+5. Table tab provides, bookList of books with thumbnail image,title author,review and rating
+   with view edit and remove functionality.
+6. Card view provides cards of books with title and author with the view,edit and remove functionality.
+
+[Working Demo] (https://www.myBookLibrary.com)
+
+### Instructions
+
+---
+
+1. Clone the repo & run `npm install`.
+2. From the app(backend & Frontend) Folder run `npm run dev`.
