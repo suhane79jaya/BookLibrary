@@ -12,7 +12,7 @@ This repository contains a book library built using MERN Stack.Please follow the
    with view edit and remove functionality.
 6. Card view provides cards of books with title and author with the view,edit and remove functionality.
 
-[Working Demo] (https://www.myBookLibrary.com)
+[Working Demo] (https://mern-bookslibrary.netlify.app)
 
 ### Instructions
 
